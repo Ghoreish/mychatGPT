@@ -41,7 +41,7 @@ def do():
         res = check_amount(addr)
         if res == True:
             print(words)
-            print(address)
+            print(addr)
             print('finally..........\n\n\n')
         n += 1
 
