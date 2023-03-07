@@ -7,7 +7,7 @@ import json
 import _thread
 
 n = 0
-a = 0
+
 
 def make():
     # Generate a random 128-bit seed
@@ -15,12 +15,12 @@ def make():
     # Convert the seed to a BIP39 mnemonic phrase
     mnemonic = Mnemonic("english").to_mnemonic(seed)
 
-
     # Create a hierarchical deterministic wallet from the seed
     wallet = BIP32Key.fromEntropy(seed)
     # Derive the first receiving address from the wallet
     address = wallet.ChildKey(0).ChildKey(0).Address()
     return (mnemonic, address)
+
 
 def check_amount(x):
     r = requests.get('https://blockchain.info/q/getreceivedbyaddress/{}'.format(str(x)))
@@ -33,6 +33,7 @@ def check_amount(x):
     else:
         return False
 
+
 def do():
     global n
     while True:
@@ -44,10 +45,11 @@ def do():
             print('finally..........\n\n\n')
         n += 1
 
-for i in range(10):
+
+for i in range(20):
     _thread.start_new_thread(do, ( ))
 
 while True:
-    if n != a:
+    if n % 1000 == 0:
         print(n)
-        a = n
+        n += 1
