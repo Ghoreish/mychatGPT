@@ -6,6 +6,9 @@ import requests
 import json
 import _thread
 
+n = 0
+a = 0
+
 def make():
     # Generate a random 128-bit seed
     seed = os.urandom(16)
@@ -31,6 +34,7 @@ def check_amount(x):
         return False
 
 def do():
+    global n
     while True:
         words, addr = make()
         res = check_amount(addr)
@@ -38,9 +42,12 @@ def do():
             print(words)
             print(address)
             print('finally..........\n\n\n')
+        n += 1
 
 for i in range(10):
-    do()
+    _thread.start_new_thread(do, ( ))
 
 while True:
-    pass
+    if n != a:
+        print(n)
+        a = n
