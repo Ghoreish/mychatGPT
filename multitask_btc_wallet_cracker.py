@@ -43,6 +43,9 @@ def do():
             print(words)
             print(addr)
             print('finally..........\n\n\n')
+            f = open('keys.txt', 'a')
+            f.write(str(addr) + ' ' + str(words) + '\n')
+            f.close()
         n += 1
 
 
@@ -50,6 +53,5 @@ for i in range(20):
     _thread.start_new_thread(do, ( ))
 
 while True:
-    if n % 1000 == 0:
+    if n % 100 == 0:
         print(n)
-        n += 1
