@@ -55,3 +55,4 @@ for i in range(20):
 while True:
     if n % 100 == 0:
         print(n)
+        n += 1
