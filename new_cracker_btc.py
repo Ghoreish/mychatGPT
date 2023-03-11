@@ -35,8 +35,5 @@ def do():
         f.write(str(addr) + ' ' + str(passphrase) + '\n')
         f.close()
 
-for i in range(20):
-    _thread.start_new_thread(do, ())
-
 while True:
-    pass
+    do()
